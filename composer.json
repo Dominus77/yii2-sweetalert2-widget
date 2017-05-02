@@ -1,0 +1,23 @@
+{
+    "name": "dominus77/yii2-sweetalert2-widget",
+    "description": "SweetAlert2 widget for Yii2.",
+    "type": "yii2-extension",
+    "keywords": ["dominus77","yii2","extension","widget","sweetalert2"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Alexey Shevchenko",
+            "email": "ivanovosity@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "bower-asset/animate-css": "*",
+        "bower-asset/sweetalert2": ">= 6"
+    },
+    "autoload": {
+        "psr-4": {
+            "dominus77\\sweetalert2\\": ""
+        }
+    }
+}
