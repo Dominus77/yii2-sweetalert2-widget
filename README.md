@@ -174,6 +174,7 @@ A warning message, with a function attached to the "Confirm"-button...
 Further Information
 -----
 Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
+
 License
 -----
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
