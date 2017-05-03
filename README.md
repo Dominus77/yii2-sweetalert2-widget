@@ -171,7 +171,288 @@ A warning message, with a function attached to the "Confirm"-button...
 ]); ?>
 ```
 
-Further Information
+Input Types Example
+----
+Text:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Input something',
+        'input' => Alert::INPUT_TYPE_TEXT,
+        'showCancelButton' => true,
+        'inputValidator' => new \yii\web\JsExpression("
+            function (value) {
+                return new Promise(function (resolve, reject) {
+                    if (value) {
+                        resolve()
+                    } else {
+                        reject('You need to write something!')
+                    }
+                })
+            }
+        ")
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (result) {
+            swal({
+                type: 'success',
+                html: 'You entered: ' + result
+            })
+        }
+    "),
+]); ?>
+```
+
+Email:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Input email address',
+        'input' => Alert::INPUT_TYPE_EMAIL,
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (email) {
+            swal({
+                type: 'success',
+                html: 'Entered email: ' + email
+            })
+        }
+    "),
+]); ?>
+```
+
+Password:
+```php
+<?= Alert::widget([
+    'options' => [
+              'title' => 'Enter your password',
+              'input' => Alert::INPUT_TYPE_PASSWORD,
+              'inputAttributes' => [
+                  'maxlength' => 10,
+                  'autocapitalize' => 'off',
+                  'autocorrect' => 'off',
+              ]
+          ],
+          'callback' => new \yii\web\JsExpression("
+              function (password) {
+                  if (password) {
+                      swal({
+                          type: 'success',
+                          html: 'Entered password: ' + password
+                      })
+                  }
+              }
+          "),
+      ]); ?>
+```
+
+Textarea:
+```php
+<?= Alert::widget([
+    'options' => [
+        'input' => Alert::INPUT_TYPE_TEXTAREA,
+        'showCancelButton' => true,
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (text) {
+            if (text) {
+                swal(text)
+            }
+        }
+    "),
+]); ?>
+```
+
+Select:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Select Russia',
+        'input' => Alert::INPUT_TYPE_SELECT,
+        'inputOptions' => [
+            'SRB' => 'Serbia',
+            'RUS' => 'Russia',
+            'UKR' => 'Ukraine',
+            'HRV' => 'Croatia',
+        ],
+        'inputPlaceholder' => 'Select country',
+        'showCancelButton' => true,
+        'inputValidator' => new \yii\web\JsExpression("
+            function (value) {
+                return new Promise(function (resolve, reject) {
+                    if (value === 'RUS') {
+                        resolve()
+                    } else {
+                        reject('You need to select Russia :)')
+                    }
+                })
+            }
+        ")
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (result) {
+            if (result) {
+                swal({
+                    type: 'success',
+                    html: 'You selected: ' + result
+                })
+            }
+        }
+    "),
+]); ?>
+```
+
+Radio:
+```php
+<?php
+$script = new \yii\web\JsExpression("
+    // inputOptions can be an object or Promise
+    var inputOptions = new Promise(function (resolve) {
+        setTimeout(function () {
+            resolve({
+                '#ff0000': 'Red',
+                '#00ff00': 'Green',
+                '#0000ff': 'Blue'
+            })
+        }, 2000)
+    })
+");
+$this->registerJs($script, \yii\web\View::POS_HEAD);
+
+echo Alert::widget([
+    'options' => [
+        'title' => 'Select color',
+        'input' => Alert::INPUT_TYPE_RADIO,
+        'inputOptions' => new \yii\web\JsExpression("inputOptions"),
+        'inputValidator' => new \yii\web\JsExpression("
+            function (result) {
+                return new Promise(function (resolve, reject) {
+                    if (result) {
+                        resolve()
+                    } else {
+                        reject('You need to select something!')
+                    }
+                })
+            }
+        ")
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (result) {
+            swal({
+                type: 'success',
+                html: 'You selected: ' + result
+            })
+        }
+    "),
+]);
+?>
+```
+
+Checkbox:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Terms and conditions',
+        'input' => Alert::INPUT_TYPE_CHECKBOX,
+        'inputValue' => 1,
+        'inputPlaceholder' => 'I agree with the terms and conditions',
+        'confirmButtonText' => 'Continue <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>',
+        'inputValidator' => new \yii\web\JsExpression("
+            function (result) {
+                return new Promise(function (resolve, reject) {
+                    if (result) {
+                        resolve()
+                    } else {
+                        reject('You need to agree with T&C')
+                    }
+                })
+            }
+        ")
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (result) {
+            swal({
+                type: 'success',
+                html: 'You agreed with T&C :' + result
+            })
+        }
+    "),
+]); ?>
+```
+
+File:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Select image',
+        'input' => Alert::INPUT_TYPE_FILE,
+        'inputAttributes' => [
+            'accept' => 'image/*',
+        ],
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (file) {
+            var reader = new FileReader
+            reader.onload = function (e) {
+                swal({
+                    imageUrl: e.target.result
+                })
+            }
+            reader.readAsDataURL(file)
+        }
+    "),
+]); ?>
+```
+
+Range:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'How old are you?',
+        'type' => Alert::TYPE_QUESTION,
+        'input' => Alert::INPUT_TYPE_RANGE,
+        'inputAttributes' => [
+            'min' => 8,
+            'max' => 120,
+            'step' => 1,
+        ],
+        'inputValue' => 25,
+    ]
+]); ?>
+```
+
+Multiple inputs aren't supported, you can achieve them by using `html` and `preConfirm` parameters.
+Inside the `preConfirm()` function you can pass the custom result to the `resolve()` function as a parameter:
+```php
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Multiple inputs',
+        'html' => '<input id="swal-input1" class="swal2-input"> <input id="swal-input2" class="swal2-input">',
+        'preConfirm' => new \yii\web\JsExpression("
+            function () {
+                return new Promise(function (resolve) {
+                    resolve([
+                        $('#swal-input1').val(),
+                        $('#swal-input2').val()
+                    ])
+                })
+            }
+        "),
+        'onOpen' => new \yii\web\JsExpression("
+            function () {
+                $('#swal-input1').focus()
+            }
+        "),
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (result) {
+            swal(JSON.stringify(result))
+        }
+    "),
+]); ?>
+```
+
+More Information
 -----
 Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
 

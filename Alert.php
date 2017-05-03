@@ -26,14 +26,12 @@ class Alert extends Widget
     const INPUT_TYPE_EMAIL = 'email';
     const INPUT_TYPE_PASSWORD = 'password';
     const INPUT_TYPE_NUMBER = 'number';
-    const INPUT_TYPE_TEL = 'tel';
     const INPUT_TYPE_RANGE = 'range';
     const INPUT_TYPE_TEXTAREA = 'textarea';
     const INPUT_TYPE_SELECT = 'select';
     const INPUT_TYPE_RADIO = 'radio';
     const INPUT_TYPE_CHECKBOX = 'checkbox';
     const INPUT_TYPE_FILE = 'file';
-    const INPUT_TYPE_url = 'url';
 
     /**
      * All the flash messages stored for the session are displayed and removed from the session
