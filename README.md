@@ -225,25 +225,25 @@ Password:
 ```php
 <?= Alert::widget([
     'options' => [
-              'title' => 'Enter your password',
-              'input' => Alert::INPUT_TYPE_PASSWORD,
-              'inputAttributes' => [
-                  'maxlength' => 10,
-                  'autocapitalize' => 'off',
-                  'autocorrect' => 'off',
-              ]
-          ],
-          'callback' => new \yii\web\JsExpression("
-              function (password) {
-                  if (password) {
-                      swal({
-                          type: 'success',
-                          html: 'Entered password: ' + password
-                      })
-                  }
-              }
-          "),
-      ]); ?>
+        'title' => 'Enter your password',
+        'input' => Alert::INPUT_TYPE_PASSWORD,
+        'inputAttributes' => [
+        'maxlength' => 10,
+            'autocapitalize' => 'off',
+            'autocorrect' => 'off',
+        ]
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (password) {
+          if (password) {
+              swal({
+                  type: 'success',
+                  html: 'Entered password: ' + password
+              })
+          }
+        }
+   "),
+]); ?>
 ```
 
 Textarea:
