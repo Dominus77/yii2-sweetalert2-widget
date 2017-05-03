@@ -25,5 +25,6 @@ class SweetAlert2Asset extends AssetBundle
 
     public $depends = [
         'yii\web\JqueryAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }
