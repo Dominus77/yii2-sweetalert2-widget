@@ -29,12 +29,12 @@ Flash message
 ----
 
 View:
-```php
+```
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 ```
 
 Controller:
-```php
+```
 <?php
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 
@@ -43,13 +43,13 @@ Controller:
 Render Widget
 ----
 View:
-```php
+```
 <?php
 use dominus77\sweetalert2\Alert;
 ```
 
 A basic message
-```php
+```
 <?= Alert::widget([
     'options' => [
         'Any fool can use a computer'
@@ -58,7 +58,7 @@ A basic message
 ```
 
 A title with a text under
-```php
+```
 <?= Alert::widget([
     'options' => [
         'The Internet?',
@@ -69,7 +69,7 @@ A title with a text under
 ```
 
 A success message!
-```php
+```
 <?= Alert::widget([
     'options' => [
         'Good job!',
@@ -80,7 +80,7 @@ A success message!
 ```
 
 A message with auto close timer
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Auto close alert!',
@@ -99,7 +99,7 @@ A message with auto close timer
 ```
 
 Custom HTML description and buttons
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => '<i>HTML</i> <u>example</u>',
@@ -130,7 +130,7 @@ or add
 to the require section of your `composer.json` file.
 
 Example:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'jQuery HTML example',
@@ -142,7 +142,7 @@ Example:
 ```
 
 A warning message, with a function attached to the "Confirm"-button...
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Are you sure?',
@@ -162,7 +162,7 @@ A warning message, with a function attached to the "Confirm"-button...
 ```
 
 ... and by passing a parameter, you can execute something else for "Cancel".
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Are you sure?',
@@ -199,7 +199,7 @@ Input Types Example
 ----
 
 Text:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Input something',
@@ -229,7 +229,7 @@ Text:
 ```
 
 Email:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Input email address',
@@ -247,7 +247,7 @@ Email:
 ```
 
 Password:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Enter your password',
@@ -272,7 +272,7 @@ Password:
 ```
 
 Textarea:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'input' => Alert::INPUT_TYPE_TEXTAREA,
@@ -289,7 +289,7 @@ Textarea:
 ```
 
 Select:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Select Russia',
@@ -328,7 +328,7 @@ Select:
 ```
 
 Radio:
-```php
+```
 <?php
 $script = new \yii\web\JsExpression("
     // inputOptions can be an object or Promise
@@ -373,7 +373,7 @@ echo Alert::widget([
 ```
 
 Checkbox:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Terms and conditions',
@@ -405,7 +405,7 @@ Checkbox:
 ```
 
 File:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Select image',
@@ -429,7 +429,7 @@ File:
 ```
 
 Range:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'How old are you?',
@@ -447,7 +447,7 @@ Range:
 
 Multiple inputs aren't supported, you can achieve them by using `html` and `preConfirm` parameters.
 Inside the `preConfirm()` function you can pass the custom result to the `resolve()` function as a parameter:
-```php
+```
 <?= Alert::widget([
     'options' => [
         'title' => 'Multiple inputs',
