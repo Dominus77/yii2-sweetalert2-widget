@@ -35,7 +35,7 @@ View:
 ```
 
 Controller:
-```php
+```
 Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ```
 
