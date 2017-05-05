@@ -27,15 +27,16 @@ Usage
 
 Once the extension is installed, simply use it in your code by:
 
-Flash message 
+Flash message
 ----
 View:
 ```php
-<?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
+<?php echo \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
 ```
 
 Controller:
 ```php
+<?php
 ...
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ...
@@ -45,6 +46,7 @@ Render Widget
 ----
 View:
 ```php
+<?php
 use dominus77\sweetalert2\Alert;
 ...
 ```
@@ -155,7 +157,9 @@ A warning message, with a function attached to the "Confirm"-button...
     "),
 ]); ?>
 ```
+
 ... and by passing a parameter, you can execute something else for "Cancel".
+
 ```php
 <?= Alert::widget([
     'options' => [
