@@ -44,7 +44,7 @@ Controller:
 Render Widget
 ----
 View:
-```php
+```
 <?php
 use dominus77\sweetalert2\Alert;
 ...
