@@ -21,7 +21,6 @@ or add
 
 to the require section of your `composer.json` file.
 
-
 Usage
 -----
 Once the extension is installed, simply use it in your code by:
@@ -29,12 +28,12 @@ Once the extension is installed, simply use it in your code by:
 Flash message
 ----
 
-View:
+View
 ```php
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 ```
 
-Controller:
+Controller
 ```php
 <?php
 ...
