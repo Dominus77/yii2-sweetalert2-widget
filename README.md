@@ -29,12 +29,15 @@ Once the extension is installed, simply use it in your code by:
 
 Flash message
 ----
+
 View:
+
 ```php
-<?php echo \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
+<?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 ```
 
 Controller:
+
 ```php
 <?php
 ...
@@ -45,6 +48,7 @@ Controller:
 Render Widget
 ----
 View:
+
 ```php
 <?php
 use dominus77\sweetalert2\Alert;
@@ -52,6 +56,7 @@ use dominus77\sweetalert2\Alert;
 ```
 
 A basic message
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -59,7 +64,9 @@ A basic message
     ],
 ]); ?>
 ```
+
 A title with a text under
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -69,7 +76,9 @@ A title with a text under
     ]
 ]); ?>
 ```
+
 A success message!
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -79,7 +88,9 @@ A success message!
     ]
 ]); ?>
 ```
+
 A message with auto close timer
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -97,7 +108,9 @@ A message with auto close timer
     "),
 ]); ?>
 ```
+
 Custom HTML description and buttons
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -117,16 +130,21 @@ Custom HTML description and buttons
 jQuery HTML with custom animation, requires installation [Animate.css](https://daneden.github.io/animate.css)
 
 Either run:
+
 ```
 php composer.phar require bower-asset/animate-css "*"
 ```
+
 or add
+
 ```
 "bower-asset/animate-css": "*"
 ```
+
 to the require section of your `composer.json` file.
 
 Example:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -139,6 +157,7 @@ Example:
 ```
 
 A warning message, with a function attached to the "Confirm"-button...
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -195,7 +214,9 @@ A warning message, with a function attached to the "Confirm"-button...
 
 Input Types Example
 ----
+
 Text:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -226,6 +247,7 @@ Text:
 ```
 
 Email:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -244,6 +266,7 @@ Email:
 ```
 
 Password:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -269,6 +292,7 @@ Password:
 ```
 
 Textarea:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -286,6 +310,7 @@ Textarea:
 ```
 
 Select:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -325,6 +350,7 @@ Select:
 ```
 
 Radio:
+
 ```php
 <?php
 $script = new \yii\web\JsExpression("
@@ -371,6 +397,7 @@ echo Alert::widget([
 ```
 
 Checkbox:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -403,6 +430,7 @@ Checkbox:
 ```
 
 File:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -427,6 +455,7 @@ File:
 ```
 
 Range:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -445,6 +474,7 @@ Range:
 
 Multiple inputs aren't supported, you can achieve them by using `html` and `preConfirm` parameters.
 Inside the `preConfirm()` function you can pass the custom result to the `resolve()` function as a parameter:
+
 ```php
 <?= Alert::widget([
     'options' => [
@@ -476,8 +506,10 @@ Inside the `preConfirm()` function you can pass the custom result to the `resolv
 
 More Information
 -----
+
 Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
 
 License
 -----
+
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
