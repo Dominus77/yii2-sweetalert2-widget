@@ -29,34 +29,32 @@ Flash message
 ----
 
 View:
-```
+```php
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 ```
 
 Controller:
-```
+```php
 <?php
-...
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
-...
+
 ```
 
 Render Widget
 ----
 View:
-```
+```php
 <?php
 use dominus77\sweetalert2\Alert;
-...
 ```
 
 A basic message
 ```php
-echo Alert::widget([
+<?= Alert::widget([
     'options' => [
         'Any fool can use a computer'
     ],
-]);
+]) ?>
 ```
 
 A title with a text under
@@ -67,7 +65,7 @@ A title with a text under
         'That thing is still around?',
         Alert::TYPE_QUESTION
     ]
-]); ?>
+]) ?>
 ```
 
 A success message!
@@ -78,7 +76,7 @@ A success message!
         'You clicked the button!',
         Alert::TYPE_SUCCESS
     ]
-]); ?>
+]) ?>
 ```
 
 A message with auto close timer
@@ -97,7 +95,7 @@ A message with auto close timer
             }
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Custom HTML description and buttons
@@ -114,7 +112,7 @@ Custom HTML description and buttons
         'confirmButtonText' => '<i class="fa fa-thumbs-up"></i> Great!',
         'cancelButtonText' => '<i class="fa fa-thumbs-down"></i>',
     ],
-]); ?>
+]) ?>
 ```
 
 jQuery HTML with custom animation, requires installation [Animate.css](https://daneden.github.io/animate.css)
@@ -140,7 +138,7 @@ Example:
         'animation' => false,
         'customClass' => 'animated jello', // https://daneden.github.io/animate.css/
     ],
-]); ?>
+]) ?>
 ```
 
 A warning message, with a function attached to the "Confirm"-button...
@@ -160,7 +158,7 @@ A warning message, with a function attached to the "Confirm"-button...
             swal('Deleted!','Your file has been deleted.','success')
         }
     "),
-]); ?>
+]) ?>
 ```
 
 ... and by passing a parameter, you can execute something else for "Cancel".
@@ -194,7 +192,7 @@ A warning message, with a function attached to the "Confirm"-button...
             }
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Input Types Example
@@ -227,7 +225,7 @@ Text:
             })
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Email:
@@ -245,7 +243,7 @@ Email:
             })
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Password:
@@ -270,7 +268,7 @@ Password:
           }
         }
    "),
-]); ?>
+]) ?>
 ```
 
 Textarea:
@@ -287,7 +285,7 @@ Textarea:
             }
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Select:
@@ -326,7 +324,7 @@ Select:
             }
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Radio:
@@ -371,8 +369,7 @@ echo Alert::widget([
             })
         }
     "),
-]);
-?>
+]); ?>
 ```
 
 Checkbox:
@@ -404,7 +401,7 @@ Checkbox:
             })
         }
     "),
-]); ?>
+]) ?>
 ```
 
 File:
@@ -428,7 +425,7 @@ File:
             reader.readAsDataURL(file)
         }
     "),
-]); ?>
+]) ?>
 ```
 
 Range:
@@ -445,7 +442,7 @@ Range:
         ],
         'inputValue' => 25,
     ]
-]); ?>
+]) ?>
 ```
 
 Multiple inputs aren't supported, you can achieve them by using `html` and `preConfirm` parameters.
@@ -476,7 +473,7 @@ Inside the `preConfirm()` function you can pass the custom result to the `resolv
             swal(JSON.stringify(result))
         }
     "),
-]); ?>
+]) ?>
 ```
 
 More Information
