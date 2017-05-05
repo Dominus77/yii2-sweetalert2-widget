@@ -28,13 +28,13 @@ Once the extension is installed, simply use it in your code by:
 Flash message
 ----
 
-View
-```php
+View:
+```
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 ```
 
-Controller
-```php
+Controller:
+```
 <?php
 ...
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
