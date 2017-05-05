@@ -25,24 +25,24 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the extension is installed, simply use it in your code by:
 
 Flash message
 ----
 View:
-```php
+```
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
 ```
 
 Controller:
-```php
+```
 Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ```
 
 Render Widget
 ----
 View:
-```php
+```
 use dominus77\sweetalert2\Alert;
 ```
 A basic message
@@ -118,6 +118,8 @@ or add
 ```
 "bower-asset/animate-css": "*"
 ```
+to the require section of your `composer.json` file.
+
 Example:
 ```php
 <?= Alert::widget([
