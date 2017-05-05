@@ -36,7 +36,7 @@ View:
 
 Controller:
 ```php
-Yii::$app->session->setFlash('success', 'Congratulations!');
+Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ```
 
 Render Widget
@@ -59,7 +59,7 @@ A title with a text under
     'options' => [
         'The Internet?',
         'That thing is still around?',
-        'question'
+        Alert::TYPE_QUESTION
     ]
 ]); ?>
 ```
@@ -69,7 +69,7 @@ A success message!
     'options' => [
         'Good job!',
         'You clicked the button!',
-        'success'
+        Alert::TYPE_SUCCESS
     ]
 ]); ?>
 ```
@@ -107,7 +107,18 @@ Custom HTML description and buttons
     ],
 ]); ?>
 ```
-jQuery HTML with custom animation
+
+jQuery HTML with custom animation, requires installation [Animate.css](https://daneden.github.io/animate.css)
+
+Either run:
+```
+php composer.phar require bower-asset/animate-css "*"
+```
+or add
+```
+"bower-asset/animate-css": "*"
+```
+Example:
 ```php
 <?= Alert::widget([
     'options' => [
@@ -118,6 +129,7 @@ jQuery HTML with custom animation
     ],
 ]); ?>
 ```
+
 A warning message, with a function attached to the "Confirm"-button...
 ```php
 <?= Alert::widget([
