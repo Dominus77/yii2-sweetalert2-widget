@@ -38,14 +38,21 @@ View:
 Controller:
 
 ```php
+<?php
+...
 Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
+...
+?>
 ```
 
 Render Widget
 ----
 View:
 ```php
+<?php
 use dominus77\sweetalert2\Alert;
+...
+?>
 ```
 
 A basic message
