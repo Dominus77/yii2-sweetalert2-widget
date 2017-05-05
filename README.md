@@ -40,9 +40,8 @@ Controller:
 ```php
 <?php
 ...
-Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
+ Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ...
-?>
 ```
 
 Render Widget
@@ -52,7 +51,6 @@ View:
 <?php
 use dominus77\sweetalert2\Alert;
 ...
-?>
 ```
 
 A basic message
