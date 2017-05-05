@@ -52,11 +52,11 @@ use dominus77\sweetalert2\Alert;
 
 A basic message
 ```php
-<?= Alert::widget([
+echo Alert::widget([
     'options' => [
         'Any fool can use a computer'
     ],
-]); ?>
+]);
 ```
 
 A title with a text under
