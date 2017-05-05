@@ -30,12 +30,14 @@ Once the extension is installed, simply use it in your code by:
 Flash message
 ----
 View:
+
 ```php
 <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
 ```
 
 Controller:
-```
+
+```php
 Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 ```
 
@@ -45,6 +47,7 @@ View:
 ```php
 use dominus77\sweetalert2\Alert;
 ```
+
 A basic message
 ```php
 <?= Alert::widget([
