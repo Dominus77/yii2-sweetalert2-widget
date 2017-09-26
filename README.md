@@ -475,7 +475,41 @@ Inside the `preConfirm()` function you can pass the custom result to the `resolv
     "),
 ]) ?>
 ```
-
+Ajax request example
+```
+<?= Alert::widget([
+    'options' => [
+        'title' => 'Submit email to run ajax request',
+        'input' => Alert::INPUT_TYPE_EMAIL,
+        'showCancelButton' => true,
+        'confirmButtonText' => 'Submit',
+        'showLoaderOnConfirm' => true,
+        'preConfirm' => new \yii\web\JsExpression("
+            function (email) {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function() {
+                        if (email === 'taken@example.com') {
+                            reject('This email is already taken.')
+                        } else {
+                            resolve()
+                        }
+                    }, 2000)
+                })
+            }
+        "),
+        'allowOutsideClick' => false,
+    ],
+    'callback' => new \yii\web\JsExpression("
+        function (email) {
+            swal({
+                type: 'success',
+                title: 'Ajax request finished!',
+                html: 'Submitted email: ' + email
+            })
+        }
+    "),
+]) ?>
+```
 More Information
 -----
 Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
