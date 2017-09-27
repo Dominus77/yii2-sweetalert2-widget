@@ -32,8 +32,8 @@ class SiteController extends Controller
     /**
      * @return string
      */
-    public function actionTitle()
+    public function actionAnimate()
     {
-        return $this->render('title');
+        return $this->render('animate');
     }
 }

@@ -4,25 +4,25 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
-<html lang="<?= mb_substr(Yii::$app->language, 0, strrpos(Yii::$app->language, '-')); ?>">
+    <html lang="en">
     <head>
-        <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
         <?= Html::csrfMetaTags() ?>
-        <title><?= Yii::$app->name . ' | ' . Html::encode($this->title) ?></title>
+        <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-<body>
-<?php $this->beginBody() ?>
+    <body>
+    <?php $this->beginBody() ?>
 
-<?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
+    <?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
 
-<?= $content; ?>
+    <?= $content; ?>
 
-<?php $this->endBody() ?>
-</body>
-</html>
+    <?php $this->endBody() ?>
+    </body>
+    </html>
 <?php $this->endPage() ?>

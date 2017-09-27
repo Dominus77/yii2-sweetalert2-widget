@@ -15,3 +15,8 @@ modules:
            cleanup: false
 coverage:
     enabled: true
+    whitelist:
+        include:
+          - Alert.php
+        exclude:
+          - assets/*

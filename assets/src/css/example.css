@@ -10,19 +10,30 @@ button,
     padding: 15px 35px;
     margin: 26px 5px 0;
     cursor: pointer;
-    white-space: nowrap; }
+    white-space: nowrap;
+}
+
 button:hover,
 .button:hover {
-    background-color: #297dce; }
+    background-color: #297dce;
+}
+
 button:active,
 .button:active {
-    background-color: #236bb0; }
+    background-color: #236bb0;
+}
+
 button.cancel,
 .button.cancel {
-    background-color: #d0d0d0; }
+    background-color: #d0d0d0;
+}
+
 button.cancel:hover,
 .button.cancel:hover {
-    background-color: #c8c8c8; }
+    background-color: #c8c8c8;
+}
+
 button.cancel:active,
 .button.cancel:active {
-    background-color: #b7b7b7; }
+    background-color: #b7b7b7;
+}
