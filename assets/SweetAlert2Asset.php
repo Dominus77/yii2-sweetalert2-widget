@@ -10,7 +10,7 @@ use yii\web\AssetBundle;
  */
 class SweetAlert2Asset extends AssetBundle
 {
-    public $sourcePath = '@dominus77/sweetalert2/assets/src';
+    public $sourcePath = '@vendor/bower-asset/sweetalert2/dist';
 
     public $css = [];
 
@@ -19,8 +19,8 @@ class SweetAlert2Asset extends AssetBundle
     public function init()
     {
         $min = YII_ENV_DEV ? '' : '.min';
-        $this->css[] = 'dist/sweetalert2' . $min . '.css';
-        $this->js[] = 'dist/sweetalert2' . $min . '.js';
+        $this->css[] = 'sweetalert2' . $min . '.css';
+        $this->js[] = 'sweetalert2' . $min . '.js';
     }
 
     public $depends = [
