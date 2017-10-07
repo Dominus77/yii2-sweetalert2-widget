@@ -1,4 +1,4 @@
-README
+yii2-sweetalert2-widget
 ======
 Renders a [SweetAlert2](https://limonte.github.io/sweetalert2/) widget for Yii2.
 
@@ -119,12 +119,12 @@ jQuery HTML with custom animation, requires installation [Animate.css](https://d
 
 Either run:
 ```
-php composer.phar require bower-asset/animate-css "*"
+php composer.phar composer require daneden/animate.css
 ```
 
 or add
 ```
-"bower-asset/animate-css": "*"
+"daneden/animate.css": "^3.5"
 ```
 
 to the require section of your `composer.json` file.

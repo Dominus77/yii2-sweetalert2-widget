@@ -10,7 +10,7 @@ use yii\web\AssetBundle;
  */
 class SweetAlert2Asset extends AssetBundle
 {
-    public $sourcePath = '@bower/sweetalert2';
+    public $sourcePath = '@dominus77/sweetalert2/assets/src';
 
     public $css = [];
 
