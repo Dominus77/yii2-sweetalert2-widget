@@ -12,7 +12,8 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
-        "bower-asset/sweetalert2": ">= 6"
+        "bower-asset/sweetalert2": ">= 6",
+        "daneden/animate.css": "^3.5"
     },
     "autoload": {
         "psr-4": {
