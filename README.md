@@ -115,19 +115,7 @@ Custom HTML description and buttons
 ]) ?>
 ```
 
-jQuery HTML with custom animation, requires installation [Animate.css](https://daneden.github.io/animate.css)
-
-Either run:
-```
-php composer.phar composer require daneden/animate.css
-```
-
-or add
-```
-"daneden/animate.css": "^3.5"
-```
-
-to the require section of your `composer.json` file.
+jQuery HTML with custom animation [Animate.css](https://daneden.github.io/animate.css)
 
 Example:
 ```
