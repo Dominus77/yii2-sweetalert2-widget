@@ -498,6 +498,13 @@ Ajax request example
     "),
 ]) ?>
 ```
+
+Testing
+-----
+```
+$ phpunit
+```
+
 More Information
 -----
 Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
