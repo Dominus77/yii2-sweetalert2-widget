@@ -1,1 +1,3 @@
-/.package
+build
+composer.lock
+vendor

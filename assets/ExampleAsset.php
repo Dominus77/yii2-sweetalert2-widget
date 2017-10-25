@@ -10,12 +10,14 @@ use yii\web\AssetBundle;
  */
 class ExampleAsset extends AssetBundle
 {
-    public $sourcePath = '@dominus77/sweetalert2/assets/src';
-
-    public $css = [
-        'css/example.css',
-        'css/buttons.css'
-    ];
+    public function init()
+    {
+        $this->sourcePath = __DIR__ . '/src';
+        $this->css = [
+            'css/example.css',
+            'css/buttons.css'
+        ];
+    }
 
     public $depends = [
         'yii\bootstrap\BootstrapAsset',
