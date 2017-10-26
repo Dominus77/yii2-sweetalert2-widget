@@ -18,8 +18,4 @@ class ExampleAsset extends AssetBundle
             'css/buttons.css'
         ];
     }
-
-    public $depends = [
-        'yii\bootstrap\BootstrapAsset',
-    ];
 }

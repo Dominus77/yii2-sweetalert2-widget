@@ -19,4 +19,8 @@ class AnimateCssAsset extends AssetBundle
         $min = YII_ENV_DEV ? '' : '.min';
         $this->css[] = 'animate' . $min . '.css';
     }
+
+    public $depends = [
+        'yii\web\JqueryAsset',
+    ];
 }

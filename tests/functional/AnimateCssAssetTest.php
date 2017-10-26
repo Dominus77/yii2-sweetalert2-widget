@@ -18,9 +18,10 @@ class AnimateAssetTest extends TestCase
         $view = $this->getView();
         $this->assertEmpty($view->assetBundles);
         AnimateCssAsset::register($view);
-        $this->assertEquals(1, count($view->assetBundles));
+        $this->assertEquals(2, count($view->assetBundles));
         $this->assertTrue($view->assetBundles['dominus77\\sweetalert2\\assets\\AnimateCssAsset'] instanceof AssetBundle);
         $content = $view->renderFile('@tests/views/layouts/rawlayout.php');
+        //$this->assertContains('jquery.js', $content);
         $this->assertContains('animate' . $min . '.css', $content);
     }
 }

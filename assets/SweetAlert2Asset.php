@@ -22,9 +22,4 @@ class SweetAlert2Asset extends AssetBundle
         $this->css[] = 'sweetalert2' . $min . '.css';
         $this->js[] = 'sweetalert2' . $min . '.js';
     }
-
-    public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
 }
