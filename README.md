@@ -195,11 +195,11 @@ Text:
         'showCancelButton' => true,
         'inputValidator' => new \yii\web\JsExpression("
             function (value) {
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (resolve) {
                     if (value) {
                         resolve()
                     } else {
-                        reject('You need to write something!')
+                        resolve('You need to write something!')
                     }
                 })
             }
@@ -207,10 +207,12 @@ Text:
     ],
     'callback' => new \yii\web\JsExpression("
         function (result) {
-            swal({
-                type: 'success',
-                html: 'You entered: ' + result.value
-            })
+            if(result.value) {
+                swal({
+                    type: 'success',
+                    html: 'You entered: ' + result.value
+                })
+            }
         }
     "),
 ]) ?>
