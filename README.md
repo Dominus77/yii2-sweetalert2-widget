@@ -209,7 +209,7 @@ Text:
         function (result) {
             swal({
                 type: 'success',
-                html: 'You entered: ' + result
+                html: 'You entered: ' + result.value
             })
         }
     "),
@@ -224,10 +224,10 @@ Email:
         'input' => Alert::INPUT_TYPE_EMAIL,
     ],
     'callback' => new \yii\web\JsExpression("
-        function (email) {
+        function (result) {
             swal({
                 type: 'success',
-                html: 'Entered email: ' + email
+                html: 'Entered email: ' + result.value
             })
         }
     "),
@@ -247,11 +247,11 @@ Password:
         ]
     ],
     'callback' => new \yii\web\JsExpression("
-        function (password) {
-          if (password) {
+        function (result) {
+          if (result.value) {
               swal({
                   type: 'success',
-                  html: 'Entered password: ' + password
+                  html: 'Entered password: ' + result.value
               })
           }
         }
@@ -267,9 +267,9 @@ Textarea:
         'showCancelButton' => true,
     ],
     'callback' => new \yii\web\JsExpression("
-        function (text) {
-            if (text) {
-                swal(text)
+        function (result) {
+            if (result.value) {
+                swal(result.value)
             }
         }
     "),
@@ -292,11 +292,11 @@ Select:
         'showCancelButton' => true,
         'inputValidator' => new \yii\web\JsExpression("
             function (value) {
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (resolve) {
                     if (value === 'RUS') {
                         resolve()
                     } else {
-                        reject('You need to select Russia :)')
+                        resolve('You need to select Russia :)')
                     }
                 })
             }
@@ -304,10 +304,10 @@ Select:
     ],
     'callback' => new \yii\web\JsExpression("
         function (result) {
-            if (result) {
+            if (result.value) {
                 swal({
                     type: 'success',
-                    html: 'You selected: ' + result
+                    html: 'You selected: ' + result.value
                 })
             }
         }
@@ -339,11 +339,11 @@ echo Alert::widget([
         'inputOptions' => new \yii\web\JsExpression("inputOptions"),
         'inputValidator' => new \yii\web\JsExpression("
             function (result) {
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (resolve) {
                     if (result) {
                         resolve()
                     } else {
-                        reject('You need to select something!')
+                        resolve('You need to select something!')
                     }
                 })
             }
@@ -353,7 +353,7 @@ echo Alert::widget([
         function (result) {
             swal({
                 type: 'success',
-                html: 'You selected: ' + result
+                html: 'You selected: ' + result.value
             })
         }
     "),
@@ -371,11 +371,11 @@ Checkbox:
         'confirmButtonText' => 'Continue <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>',
         'inputValidator' => new \yii\web\JsExpression("
             function (result) {
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (resolve) {
                     if (result) {
                         resolve()
                     } else {
-                        reject('You need to agree with T&C')
+                        resolve('You need to agree with T&C')
                     }
                 })
             }
@@ -385,7 +385,7 @@ Checkbox:
         function (result) {
             swal({
                 type: 'success',
-                html: 'You agreed with T&C :' + result
+                html: 'You agreed with T&C :' + result.value
             })
         }
     "),
@@ -400,17 +400,20 @@ File:
         'input' => Alert::INPUT_TYPE_FILE,
         'inputAttributes' => [
             'accept' => 'image/*',
+            'aria-label' => 'Upload your profile picture',
         ],
     ],
     'callback' => new \yii\web\JsExpression("
-        function (file) {
+        function(result) {
             var reader = new FileReader
             reader.onload = function (e) {
                 swal({
-                    imageUrl: e.target.result
+                    title: 'Your uploaded picture',
+                    imageUrl: e.target.result,
+                    imageAlt: 'The uploaded picture'
                 })
             }
-            reader.readAsDataURL(file)
+            reader.readAsDataURL(result.value)
         }
     "),
 ]) ?>
@@ -458,7 +461,7 @@ Inside the `preConfirm()` function you can pass the custom result to the `resolv
     ],
     'callback' => new \yii\web\JsExpression("
         function (result) {
-            swal(JSON.stringify(result))
+            swal(JSON.stringify(result.value))
         }
     "),
 ]) ?>
@@ -474,13 +477,14 @@ Ajax request example
         'showLoaderOnConfirm' => true,
         'preConfirm' => new \yii\web\JsExpression("
             function (email) {
-                return new Promise(function (resolve, reject) {
-                    setTimeout(function() {
+                return new Promise(function (resolve) {
+                    setTimeout(function () {
                         if (email === 'taken@example.com') {
-                            reject('This email is already taken.')
-                        } else {
-                            resolve()
+                            swal.showValidationError(
+                                'This email is already taken.'
+                            )
                         }
+                        resolve()
                     }, 2000)
                 })
             }
@@ -488,12 +492,14 @@ Ajax request example
         'allowOutsideClick' => false,
     ],
     'callback' => new \yii\web\JsExpression("
-        function (email) {
-            swal({
-                type: 'success',
-                title: 'Ajax request finished!',
-                html: 'Submitted email: ' + email
-            })
+        function (result) {
+            if (result.value) {
+                swal({
+                    type: 'success',
+                    title: 'Ajax request finished!',
+                    html: 'Submitted email: ' + result.value
+                })
+            }
         }
     "),
 ]) ?>
