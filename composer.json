@@ -23,11 +23,5 @@
         "psr-4": {
             "dominus77\\sweetalert2\\": ""
         }
-    },
-    "repositories": [
-      {
-        "type": "composer",
-        "url": "https://asset-packagist.org"
-      }
-    ]
+    }
 }
