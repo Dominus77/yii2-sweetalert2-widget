@@ -1,6 +1,6 @@
 yii2-sweetalert2-widget
 ======
-Renders a [SweetAlert2](https://limonte.github.io/sweetalert2/) widget for Yii2.
+Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
 Installation
 ------------
@@ -515,7 +515,7 @@ $ phpunit
 
 More Information
 -----
-Please, check the [SweetAlert2](https://limonte.github.io/sweetalert2/)
+Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 
 License
 -----

@@ -72,8 +72,14 @@ class Alert extends Widget
                 $session->removeFlash($type);
             }
             if (!empty($steps)) {
-                $js = "swal.queue(" . Json::encode($steps) . ");";
-                $view->registerJs($js, $view::POS_END);
+                if (is_array($steps[0]['text'])) {
+                    $steps[0]['text']['type'] = $steps[0]['type'];
+                    $js = "swal(" . Json::encode($steps[0]['text']) . ");";
+                    $view->registerJs($js, $view::POS_END);
+                } else {
+                    $js = "swal.queue(" . Json::encode($steps) . ");";
+                    $view->registerJs($js, $view::POS_END);
+                }
             }
         } else {
             $js = "swal({$this->getOptions()}).then({$this->callback}).catch(swal.noop);";
