@@ -39,6 +39,16 @@ Controller:
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, 'Congratulations!');
 
 ```
+also
+```
+<?php
+ Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, [
+    [
+        'title' => 'Your title',
+        'text' => 'Your message'
+    ]
+ ]);
+```
 
 Render Widget
 ----
