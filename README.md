@@ -45,7 +45,8 @@ also
  Yii::$app->session->setFlash(\dominus77\sweetalert2\Alert::TYPE_SUCCESS, [
     [
         'title' => 'Your title',
-        'text' => 'Your message'
+        'text' => 'Your message',
+        'confirmButtonText' => 'Done!',
     ]
  ]);
 ```
