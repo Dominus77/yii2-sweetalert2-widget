@@ -50,6 +50,25 @@ also
     ]
  ]);
 ```
+or
+```
+Yii::$app->session->setFlash('', [
+    [
+        'title' => 'Auto close alert!',
+        'text' => 'I will close in 2 seconds.',
+        'timer' => 2000,
+    ],
+    [
+        'callback' => new \yii\web\JsExpression(
+            "function (result) {
+                if (result.dismiss === 'timer') {
+                    console.log('I was closed by the timer')
+                }
+            }"
+        ),
+    ],
+]);
+```
 
 Render Widget
 ----
@@ -99,9 +118,8 @@ A message with auto close timer
         'timer' => 2000,
     ],
     'callback' => new \yii\web\JsExpression("
-        function () {},
-        function (dismiss) {
-            if (dismiss === 'timer') {
+        function (result) {
+            if (result.dismiss === 'timer') {
                 console.log('I was closed by the timer')
             }
         }
@@ -153,8 +171,10 @@ A warning message, with a function attached to the "Confirm"-button...
         'confirmButtonText' => 'Yes, delete it!',
     ],
     'callback' => new \yii\web\JsExpression("
-        function () {
-            swal('Deleted!','Your file has been deleted.','success')
+        function (result) {
+            if(result.value === true){
+                swal('Deleted!','Your file has been deleted.','success')
+            }
         }
     "),
 ]) ?>
@@ -177,12 +197,11 @@ A warning message, with a function attached to the "Confirm"-button...
         'buttonsStyling' => false,
     ],
     'callback' => new \yii\web\JsExpression("
-        function () {
-            swal('Deleted!','Your file has been deleted.','success')
-        }, function (dismiss) {
-            // dismiss can be 'cancel', 'overlay',
-            // 'close', and 'timer'
-            if (dismiss === 'cancel') {
+        function (result) {
+            if(result.value) {
+                swal('Deleted!','Your file has been deleted.','success')
+            }
+            if (result.dismiss === 'cancel') {
                 swal(
                     'Cancelled',
                     'Your imaginary file is safe :)',

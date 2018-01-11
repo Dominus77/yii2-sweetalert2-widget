@@ -73,8 +73,14 @@ class Alert extends Widget
             }
             if (!empty($steps)) {
                 if (is_array($steps[0]['text'])) {
-                    $steps[0]['text']['type'] = $steps[0]['type'];
-                    $js = "swal(" . Json::encode($steps[0]['text']) . ");";
+                    $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
+                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
+                        if (isset($steps[0]['text']['customClass'])) {
+                            AnimateCssAsset::register($view);
+                        }
+                    }
+                    $callback = Json::encode($steps[1]['text']['callback']);
+                    $js = "swal(" . Json::encode($steps[0]['text']) . ").then({$callback}).catch(swal.noop);";
                     $view->registerJs($js, $view::POS_END);
                 } else {
                     $js = "swal.queue(" . Json::encode($steps) . ");";
