@@ -52,6 +52,7 @@ also
 ```
 or
 ```
+<?php
 Yii::$app->session->setFlash('', [
     [
         'title' => 'Auto close alert!',
