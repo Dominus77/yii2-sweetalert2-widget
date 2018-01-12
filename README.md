@@ -60,13 +60,13 @@ Yii::$app->session->setFlash('', [
         'timer' => 2000,
     ],
     [
-        'callback' => new \yii\web\JsExpression(
-            "function (result) {
+        'callback' => new \yii\web\JsExpression("
+            function (result) {
                 if (result.dismiss === 'timer') {
                     console.log('I was closed by the timer')
                 }
-            }"
-        ),
+            }
+        "),
     ],
 ]);
 ```
