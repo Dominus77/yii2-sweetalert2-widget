@@ -71,18 +71,18 @@ class Alert extends Widget
                 $session->removeFlash($type);
             }
             if (!empty($steps)) {
-                if (is_array($steps[0]['text'])) {
+                if (!is_array($steps[0]['text'])) {
+                    $this->registerSwalQueue($steps);
+                } else {
                     $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
                     if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
                         if (isset($steps[0]['text']['customClass'])) {
                             $this->registerAnimate();
                         }
                     }
-                    $options = Json::encode($steps[0]['text']);
-                    $callback = Json::encode($steps[1]['text']['callback']);
-                    $this->registerSwal($options, $callback);
-                } else {
-                    $this->registerSwalQueue($steps);
+                    $this->options = $steps[0]['text'];
+                    $this->callback = $steps[1]['text']['callback'];
+                    $this->registerSwal($this->getOptions(), $this->callback);
                 }
             }
         } else {
@@ -135,13 +135,15 @@ class Alert extends Widget
     }
 
     /**
-     * Get plugin options
+     * Get widget options
      *
      * @return string
      */
     protected function getOptions()
     {
-        unset($this->options['id']);
+        if (isset($this->options['id']))
+            unset($this->options['id']);
+
         if (ArrayHelper::isIndexed($this->options)) {
             $str = '';
             foreach ($this->options as $value) {
