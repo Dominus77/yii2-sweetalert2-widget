@@ -59,7 +59,6 @@ class Alert extends Widget
      */
     public function run()
     {
-        $view = $this->getView();
         if ($this->useSessionFlash) {
             $session = Yii::$app->getSession();
             $flashes = $session->getAllFlashes();
@@ -76,21 +75,49 @@ class Alert extends Widget
                     $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
                     if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
                         if (isset($steps[0]['text']['customClass'])) {
-                            AnimateCssAsset::register($view);
+                            $this->registerAnimate();
                         }
                     }
+                    $options = Json::encode($steps[0]['text']);
                     $callback = Json::encode($steps[1]['text']['callback']);
-                    $js = "swal(" . Json::encode($steps[0]['text']) . ").then({$callback}).catch(swal.noop);";
-                    $view->registerJs($js, $view::POS_END);
+                    $this->registerSwal($options, $callback);
                 } else {
-                    $js = "swal.queue(" . Json::encode($steps) . ");";
-                    $view->registerJs($js, $view::POS_END);
+                    $this->registerSwalQueue($steps);
                 }
             }
         } else {
-            $js = "swal({$this->getOptions()}).then({$this->callback}).catch(swal.noop);";
-            $view->registerJs($js, $view::POS_END);
+            $this->registerSwal($this->getOptions(), $this->callback);
         }
+    }
+
+    /**
+     * @param array $steps
+     */
+    protected function registerSwalQueue($steps = [])
+    {
+        $view = $this->getView();
+        $js = "swal.queue(" . Json::encode($steps) . ");";
+        $view->registerJs($js, $view::POS_END);
+    }
+
+    /**
+     * @param string $options
+     * @param string $callback
+     */
+    protected function registerSwal($options = '', $callback = '')
+    {
+        $view = $this->getView();
+        $js = "swal({$options}).then({$callback}).catch(swal.noop);";
+        $view->registerJs($js, $view::POS_END);
+    }
+
+    /**
+     * Register Animate Assets
+     */
+    protected function registerAnimate()
+    {
+        $view = $this->getView();
+        AnimateCssAsset::register($view);
     }
 
     /**
@@ -102,7 +129,7 @@ class Alert extends Widget
         SweetAlert2Asset::register($view);
         if (isset($this->options['animation']) && $this->options['animation'] == false) {
             if (isset($this->options['customClass'])) {
-                AnimateCssAsset::register($view);
+                $this->registerAnimate();
             }
         }
     }
