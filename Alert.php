@@ -97,7 +97,7 @@ class Alert extends Widget
     {
         $view = $this->getView();
         $js = "swal.queue(" . Json::encode($steps) . ");";
-        $view->registerJs($js, $view::POS_END);
+        $this->view->registerJs($js, $view::POS_END);
     }
 
     /**
@@ -108,7 +108,7 @@ class Alert extends Widget
     {
         $view = $this->getView();
         $js = "swal({$options}).then({$callback}).catch(swal.noop);";
-        $view->registerJs($js, $view::POS_END);
+        $this->view->registerJs($js, $view::POS_END);
     }
 
     /**
@@ -116,8 +116,7 @@ class Alert extends Widget
      */
     protected function registerAnimate()
     {
-        $view = $this->getView();
-        AnimateCssAsset::register($view);
+        AnimateCssAsset::register($this->view);
     }
 
     /**
@@ -125,8 +124,7 @@ class Alert extends Widget
      */
     protected function registerAssets()
     {
-        $view = $this->getView();
-        SweetAlert2Asset::register($view);
+        SweetAlert2Asset::register($this->view);
         if (isset($this->options['animation']) && $this->options['animation'] == false) {
             if (isset($this->options['customClass'])) {
                 $this->registerAnimate();
