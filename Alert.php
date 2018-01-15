@@ -60,7 +60,7 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $session = Yii::$app->getSession();
+            $session = $this->getSession();
             $flashes = $session->getAllFlashes();
             $steps = [];
             foreach ($flashes as $type => $data) {
@@ -150,5 +150,13 @@ class Alert extends Widget
                 $this->registerAnimate();
             }
         }
+    }
+
+    /**
+     * @return \yii\web\Session
+     */
+    private function getSession()
+    {
+        return Yii::$app->getSession();
     }
 }
