@@ -10,12 +10,3 @@ filter:
 
 before_commands:
   - "composer install --prefer-source"
-
-build:
-    tests:
-        override:
-            -
-                command: 'vendor/bin/phpunit --coverage-clover=some-file'
-                coverage:
-                    file: 'some-file'
-                    format: 'clover'
