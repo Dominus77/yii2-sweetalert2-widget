@@ -19,6 +19,12 @@
     "require-dev": {
         "phpunit/phpunit": "^6"
     },
+    "repositories":[
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "dominus77\\sweetalert2\\": ""
