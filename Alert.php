@@ -45,12 +45,15 @@ class Alert extends Widget
      */
     public $callback = 'function() {}';
 
+    private $_session;
+
     /**
      * Initializes the widget
      */
     public function init()
     {
         parent::init();
+        $this->_session = Yii::$app->getSession();
         $this->registerAssets();
     }
 
@@ -60,15 +63,14 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $session = \Yii::$app->getSession();
-            $flashes = $session->getAllFlashes();
+            $flashes = $this->_session->getAllFlashes();
             $steps = [];
             foreach ($flashes as $type => $data) {
                 $data = (array)$data;
                 foreach ($data as $message) {
                     array_push($steps, ['type' => $type, 'text' => $message]);
                 }
-                $session->removeFlash($type);
+                $this->_session->removeFlash($type);
             }
             if (!empty($steps)) {
                 if (!is_array($steps[0]['text'])) {
