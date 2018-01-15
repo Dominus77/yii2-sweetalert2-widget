@@ -158,9 +158,6 @@ class Alert extends Widget
      */
     private function getSession()
     {
-        if($session = Yii::$app->getSession()) {
-            return $session;
-        }
-        return false;
+        return Yii::$app->session;
     }
 }
