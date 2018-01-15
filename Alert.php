@@ -60,7 +60,7 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $session = Yii::$app->getSession();
+            $session = $this->getSession();
             $flashes = $session->getAllFlashes();
             $steps = [];
             foreach ($flashes as $type => $data) {
@@ -72,7 +72,7 @@ class Alert extends Widget
             }
             if (!empty($steps)) {
                 if (!is_array($steps[0]['text'])) {
-                    $this->registerSwalQueue($steps);
+                    $this->initSwalQueue($steps);
                 } else {
                     $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
                     if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
@@ -82,11 +82,11 @@ class Alert extends Widget
                     }
                     $this->options = $steps[0]['text'];
                     $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
-                    $this->registerSwal($this->getOptions(), $this->callback);
+                    $this->initSwal($this->getOptions(), $this->callback);
                 }
             }
         } else {
-            $this->registerSwal($this->getOptions(), $this->callback);
+            $this->initSwal($this->getOptions(), $this->callback);
         }
     }
 
@@ -113,7 +113,7 @@ class Alert extends Widget
     /**
      * @param array $steps
      */
-    protected function registerSwalQueue($steps = [])
+    protected function initSwalQueue($steps = [])
     {
         $view = $this->getView();
         $js = "swal.queue(" . Json::encode($steps) . ");";
@@ -124,7 +124,7 @@ class Alert extends Widget
      * @param string $options
      * @param string $callback
      */
-    protected function registerSwal($options = '', $callback = '')
+    protected function initSwal($options = '', $callback = '')
     {
         $view = $this->getView();
         $js = "swal({$options}).then({$callback}).catch(swal.noop);";
@@ -150,5 +150,13 @@ class Alert extends Widget
                 $this->registerAnimate();
             }
         }
+    }
+
+    /**
+     * @return \yii\web\Session
+     */
+    private function getSession()
+    {
+        return Yii::$app->getSession();
     }
 }
