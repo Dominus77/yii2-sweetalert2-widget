@@ -91,6 +91,26 @@ class Alert extends Widget
     }
 
     /**
+     * Get widget options
+     *
+     * @return string
+     */
+    public function getOptions()
+    {
+        if (isset($this->options['id']))
+            unset($this->options['id']);
+
+        if (ArrayHelper::isIndexed($this->options)) {
+            $str = '';
+            foreach ($this->options as $value) {
+                $str .= '"' . $value . '",';
+            }
+            return chop($str, ' ,');
+        }
+        return Json::encode($this->options);
+    }
+
+    /**
      * @param array $steps
      */
     protected function registerSwalQueue($steps = [])
@@ -122,7 +142,7 @@ class Alert extends Widget
     /**
      * Register client assets
      */
-    public function registerAssets()
+    protected function registerAssets()
     {
         SweetAlert2Asset::register($this->view);
         if (isset($this->options['animation']) && $this->options['animation'] == false) {
@@ -130,25 +150,5 @@ class Alert extends Widget
                 $this->registerAnimate();
             }
         }
-    }
-
-    /**
-     * Get widget options
-     *
-     * @return string
-     */
-    public function getOptions()
-    {
-        if (isset($this->options['id']))
-            unset($this->options['id']);
-
-        if (ArrayHelper::isIndexed($this->options)) {
-            $str = '';
-            foreach ($this->options as $value) {
-                $str .= '"' . $value . '",';
-            }
-            return chop($str, ' ,');
-        }
-        return Json::encode($this->options);
     }
 }
