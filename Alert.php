@@ -62,7 +62,7 @@ class Alert extends Widget
         if ($this->useSessionFlash) {
             $this->renderFlashAlerts();
         } else {
-            $this->renderAlerts();
+            $this->registerSwal($this->getOptions(), $this->callback);
         }
     }
 
@@ -72,7 +72,7 @@ class Alert extends Widget
      */
     public function renderFlashAlerts()
     {
-        $session = $this->getSession();
+        $session = Yii::$app->getSession();
         $flashes = $session->getAllFlashes();
         $steps = [];
         foreach ($flashes as $type => $data) {
@@ -97,14 +97,6 @@ class Alert extends Widget
                 $this->registerSwal($this->getOptions(), $this->callback);
             }
         }
-    }
-
-    /**
-     * Renders manually set alerts
-     */
-    public function renderAlerts()
-    {
-        $this->registerSwal($this->getOptions(), $this->callback);
     }
 
     /**
@@ -167,13 +159,5 @@ class Alert extends Widget
                 $this->registerAnimate();
             }
         }
-    }
-
-    /**
-     * @return \yii\web\Session
-     */
-    private function getSession()
-    {
-        return Yii::$app->getSession();
     }
 }
