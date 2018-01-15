@@ -27,9 +27,10 @@ tools:
             standard: PSR2
         filter:
             paths: ['assets']
+            files: ['./Alert.php']
     php_loc:
         enabled: true
         excluded_dirs: [vendor, tests]
     php_cpd:
         enabled: true
-excluded_dirs: [vendor, tests]
+        excluded_dirs: [vendor, tests]
