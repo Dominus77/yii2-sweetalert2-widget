@@ -31,6 +31,8 @@ tools:
             paths: ['Alert.php','assets']
     php_loc:
         enabled: true
+        excluded_dirs: [vendor, tests]
     php_cpd:
         enabled: true
+        excluded_dirs: [vendor, tests]
 
