@@ -1,5 +1,4 @@
-yii2-sweetalert2-widget
-======
+# yii2-sweetalert2-widget
 
 [![Latest Version](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
 [![Software License](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/license)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
@@ -10,8 +9,7 @@ yii2-sweetalert2-widget
 
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
-Installation
-------------
+## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
@@ -29,12 +27,10 @@ or add
 
 to the require section of your `composer.json` file.
 
-Usage
------
+## Usage
 Once the extension is installed, simply use it in your code by:
 
-Flash message
-----
+## Flash message
 
 View:
 ```
@@ -79,8 +75,7 @@ Yii::$app->session->setFlash('', [
 ]);
 ```
 
-Render Widget
-----
+## Render Widget
 View:
 ```
 <?php
@@ -222,8 +217,7 @@ A warning message, with a function attached to the "Confirm"-button...
 ]) ?>
 ```
 
-Input Types Example
-----
+## Input Types Example
 
 Text:
 ```
@@ -546,16 +540,13 @@ Ajax request example
 ]) ?>
 ```
 
-Testing
------
+## Testing
 ```
 $ phpunit
 ```
 
-More Information
------
+## More Information
 Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 
-License
------
+## License
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
