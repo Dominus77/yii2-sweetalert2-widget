@@ -15,6 +15,9 @@
         </testsuite>
     </testsuites>
     <filter>
+        <blacklist>
+            <directory suffix=".php">./tests</directory>
+        </blacklist>
         <whitelist>
             <directory suffix=".php">./</directory>
             <directory suffix=".php">./assets/</directory>
