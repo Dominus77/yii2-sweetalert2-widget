@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "^2.0",
+        "yiisoft/yii2": "~2.0.12",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "bower-asset/sweetalert2": ">= 6",
         "daneden/animate.css": "^3.5"
