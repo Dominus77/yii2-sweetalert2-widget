@@ -60,29 +60,30 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $session = $this->getSession();
-            $flashes = $session->getAllFlashes();
-            $steps = [];
-            foreach ($flashes as $type => $data) {
-                $data = (array)$data;
-                foreach ($data as $message) {
-                    array_push($steps, ['type' => $type, 'text' => $message]);
-                }
-                $session->removeFlash($type);
-            }
-            if (!empty($steps)) {
-                if (!is_array($steps[0]['text'])) {
-                    $this->initSwalQueue($steps);
-                } else {
-                    $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
-                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
-                        if (isset($steps[0]['text']['customClass'])) {
-                            $this->registerAnimate();
-                        }
+            if($session = $this->getSession()) {
+                $flashes = $session->getAllFlashes();
+                $steps = [];
+                foreach ($flashes as $type => $data) {
+                    $data = (array)$data;
+                    foreach ($data as $message) {
+                        array_push($steps, ['type' => $type, 'text' => $message]);
                     }
-                    $this->options = $steps[0]['text'];
-                    $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
-                    $this->initSwal($this->getOptions(), $this->callback);
+                    $session->removeFlash($type);
+                }
+                if (!empty($steps)) {
+                    if (!is_array($steps[0]['text'])) {
+                        $this->initSwalQueue($steps);
+                    } else {
+                        $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
+                        if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
+                            if (isset($steps[0]['text']['customClass'])) {
+                                $this->registerAnimate();
+                            }
+                        }
+                        $this->options = $steps[0]['text'];
+                        $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
+                        $this->initSwal($this->getOptions(), $this->callback);
+                    }
                 }
             }
         } else {
@@ -157,6 +158,6 @@ class Alert extends Widget
      */
     private function getSession()
     {
-        return Yii::$app->getSession();
+        return Yii::$app->getSession() ? Yii::$app->getSession() : false;
     }
 }
