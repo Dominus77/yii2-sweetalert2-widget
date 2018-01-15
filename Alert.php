@@ -60,42 +60,33 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $this->renderFlashAlerts();
+            $session = Yii::$app->getSession();
+            $flashes = $session->getAllFlashes();
+            $steps = [];
+            foreach ($flashes as $type => $data) {
+                $data = (array)$data;
+                foreach ($data as $message) {
+                    array_push($steps, ['type' => $type, 'text' => $message]);
+                }
+                $session->removeFlash($type);
+            }
+            if (!empty($steps)) {
+                if (!is_array($steps[0]['text'])) {
+                    $this->registerSwalQueue($steps);
+                } else {
+                    $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
+                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
+                        if (isset($steps[0]['text']['customClass'])) {
+                            $this->registerAnimate();
+                        }
+                    }
+                    $this->options = $steps[0]['text'];
+                    $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
+                    $this->registerSwal($this->getOptions(), $this->callback);
+                }
+            }
         } else {
             $this->registerSwal($this->getOptions(), $this->callback);
-        }
-    }
-
-    /**
-     * Renders alerts from session flash settings.
-     * @see [[\yii\web\Session::getAllFlashes()]]
-     */
-    public function renderFlashAlerts()
-    {
-        $session = Yii::$app->getSession();
-        $flashes = $session->getAllFlashes();
-        $steps = [];
-        foreach ($flashes as $type => $data) {
-            $data = (array)$data;
-            foreach ($data as $message) {
-                array_push($steps, ['type' => $type, 'text' => $message]);
-            }
-            $session->removeFlash($type);
-        }
-        if (!empty($steps)) {
-            if (!is_array($steps[0]['text'])) {
-                $this->registerSwalQueue($steps);
-            } else {
-                $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
-                if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
-                    if (isset($steps[0]['text']['customClass'])) {
-                        $this->registerAnimate();
-                    }
-                }
-                $this->options = $steps[0]['text'];
-                $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
-                $this->registerSwal($this->getOptions(), $this->callback);
-            }
         }
     }
 
