@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  * Class AnimateAssetTest
  * @package tests
  */
-class AnimateAssetTest extends TestCase
+class AnimateCssAssetTest extends TestCase
 {
     public function testRegister()
     {

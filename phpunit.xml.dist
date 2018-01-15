@@ -17,6 +17,7 @@
     <filter>
         <whitelist>
             <directory suffix=".php">./assets/</directory>
+            <file>./Alert.php</file>
         </whitelist>
     </filter>
     <logging>

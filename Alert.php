@@ -81,7 +81,7 @@ class Alert extends Widget
                         }
                     }
                     $this->options = $steps[0]['text'];
-                    $this->callback = $steps[1]['text']['callback'];
+                    $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
                     $this->registerSwal($this->getOptions(), $this->callback);
                 }
             }
@@ -122,7 +122,7 @@ class Alert extends Widget
     /**
      * Register client assets
      */
-    protected function registerAssets()
+    public function registerAssets()
     {
         SweetAlert2Asset::register($this->view);
         if (isset($this->options['animation']) && $this->options['animation'] == false) {
@@ -137,7 +137,7 @@ class Alert extends Widget
      *
      * @return string
      */
-    protected function getOptions()
+    public function getOptions()
     {
         if (isset($this->options['id']))
             unset($this->options['id']);
