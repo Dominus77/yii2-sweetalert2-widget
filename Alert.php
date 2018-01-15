@@ -60,7 +60,7 @@ class Alert extends Widget
     public function run()
     {
         if ($this->useSessionFlash) {
-            $session = Yii::$app->getSession();
+            $session = \Yii::$app->getSession();
             $flashes = $session->getAllFlashes();
             $steps = [];
             foreach ($flashes as $type => $data) {
