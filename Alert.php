@@ -152,7 +152,7 @@ class Alert extends Widget
     }
 
     /**
-     * @return \yii\web\Session
+     * @return bool|mixed|\yii\web\Session
      */
     private function getSession()
     {
