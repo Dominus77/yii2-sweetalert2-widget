@@ -1,5 +1,10 @@
 yii2-sweetalert2-widget
 ======
+
+[![Latest Version](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
+[![Software License](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/license)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
+[![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
+
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
 Installation
