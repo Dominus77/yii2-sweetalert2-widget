@@ -8,13 +8,21 @@ install:
   - composer self-update
   - composer install
 
+before_install:
+  - sudo pip install codecov
+
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
+  - composer install --dev
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
+  - phpunit --coverage-clover=coverage.xml
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+after_success:
+  - codecov
