@@ -10,12 +10,24 @@ use yii\web\AssetBundle;
  */
 class SweetAlert2Asset extends AssetBundle
 {
+    /**
+     * @var string
+     */
     public $sourcePath = '@bower/sweetalert2/dist';
 
+    /**
+     * @var array
+     */
     public $css = [];
 
+    /**
+     * @var array
+     */
     public $js = [];
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         $min = YII_ENV_DEV ? '' : '.min';

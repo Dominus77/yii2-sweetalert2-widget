@@ -159,4 +159,3 @@ class Alert extends Widget
         return $this->useSessionFlash ? Yii::$app->session : false;
     }
 }
-

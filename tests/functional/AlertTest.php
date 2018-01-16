@@ -12,7 +12,7 @@ use yii\helpers\Json;
 class AlertTest extends TestCase
 {
     /**
-     * getOptions()
+     * @inheritdoc
      */
     public function testGetOptions()
     {
@@ -24,6 +24,9 @@ class AlertTest extends TestCase
         $this->assertJson(Json::encode($alert->options), $alert->getOptions());
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testRegisterSwalQueue()
     {
         \Yii::$app->session->setFlash('success', 'Your message');
@@ -31,6 +34,9 @@ class AlertTest extends TestCase
         $this->assertContains('', $alert);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testRunFlash()
     {
         \Yii::$app->session->setFlash('success', [
@@ -46,6 +52,9 @@ class AlertTest extends TestCase
         $this->assertContains('', $alert);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testRegisterSwal()
     {
         $alert = Alert::widget([

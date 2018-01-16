@@ -11,6 +11,9 @@ use yii\web\AssetBundle;
  */
 class ExampleAssetTest extends TestCase
 {
+    /**
+     * @inheritdoc
+     */
     public function testRegister()
     {
         $view = $this->getView();

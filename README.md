@@ -9,6 +9,8 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/86b5a09d-a3fa-4d25-b3e9-b65c417ccc8b/big.png)](https://insight.sensiolabs.com/projects/86b5a09d-a3fa-4d25-b3e9-b65c417ccc8b)
 
+## Description
+
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
 ## Installation
@@ -552,3 +554,4 @@ Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 
 ## License
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
+

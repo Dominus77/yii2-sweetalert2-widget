@@ -44,6 +44,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $this->destroyApplication();
     }
 
+    /**
+     * @param array $config
+     * @param string $appClass
+     */
     protected function mockApplication($config = [], $appClass = '\yii\console\Application')
     {
         new $appClass(
@@ -58,6 +62,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         );
     }
 
+    /**
+     * @param array $config
+     * @param string $appClass
+     */
     protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
     {
         new $appClass(
@@ -88,6 +96,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         );
     }
 
+    /**
+     * @return string
+     */
     protected function getVendorPath()
     {
         return dirname(dirname(__DIR__)) . '/vendor';

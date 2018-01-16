@@ -11,6 +11,9 @@ use yii\web\AssetBundle;
  */
 class AnimateCssAssetTest extends TestCase
 {
+    /**
+     * @inheritdoc
+     */
     public function testRegister()
     {
         $min = YII_ENV_DEV ? '' : '.min';

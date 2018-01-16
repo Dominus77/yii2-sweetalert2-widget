@@ -10,6 +10,7 @@ class AssetManager extends \yii\web\AssetManager
 {
     private $_hashes = [];
     private $_counter = 0;
+
     /**
      * @inheritdoc
      */
