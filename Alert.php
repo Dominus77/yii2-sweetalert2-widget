@@ -55,38 +55,56 @@ class Alert extends Widget
     }
 
     /**
-     * @return string|void
+     * @inheritdoc
      */
     public function run()
     {
         if ($session = $this->getSession()) {
-            $flashes = $session->getAllFlashes();
-            $steps = [];
-            foreach ($flashes as $type => $data) {
-                $data = (array)$data;
-                foreach ($data as $message) {
-                    array_push($steps, ['type' => $type, 'text' => $message]);
-                }
-                $session->removeFlash($type);
-            }
+            $steps = $this->processFlash($session);
             if (!empty($steps)) {
-                if (!is_array($steps[0]['text'])) {
+                if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
                     $this->initSwalQueue($steps);
                 } else {
-                    $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
-                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] === false) {
-                        if (isset($steps[0]['text']['customClass'])) {
-                            $this->registerAnimate();
-                        }
-                    }
-                    $this->options = $steps[0]['text'];
-                    $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
-                    $this->initSwal($this->getOptions(), $this->callback);
+                    $this->getFlashWidget($steps);
                 }
             }
         } else {
             $this->initSwal($this->getOptions(), $this->callback);
         }
+    }
+
+    /**
+     * @param $session bool|mixed|\yii\web\Session
+     * @return array
+     */
+    public function processFlash($session)
+    {
+        $flashes = $session->getAllFlashes();
+        $steps = [];
+        foreach ($flashes as $type => $data) {
+            $data = (array)$data;
+            foreach ($data as $message) {
+                array_push($steps, ['type' => $type, 'text' => $message]);
+            }
+            $session->removeFlash($type);
+        }
+        return $steps;
+    }
+
+    /**
+     * @param array $steps
+     */
+    public function getFlashWidget($steps = [])
+    {
+        $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
+        if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] === false) {
+            if (isset($steps[0]['text']['customClass'])) {
+                $this->registerAnimate();
+            }
+        }
+        $this->options = $steps[0]['text'];
+        $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
+        $this->initSwal($this->getOptions(), $this->callback);
     }
 
     /**
@@ -112,7 +130,7 @@ class Alert extends Widget
     /**
      * @param array $steps
      */
-    protected function initSwalQueue($steps = [])
+    public function initSwalQueue($steps = [])
     {
         $view = $this->getView();
         $js = "swal.queue(" . Json::encode($steps) . ");";
@@ -123,7 +141,7 @@ class Alert extends Widget
      * @param string $options
      * @param string $callback
      */
-    protected function initSwal($options = '', $callback = '')
+    public function initSwal($options = '', $callback = '')
     {
         $view = $this->getView();
         $js = "swal({$options}).then({$callback}).catch(swal.noop);";
@@ -133,7 +151,7 @@ class Alert extends Widget
     /**
      * Register Animate Assets
      */
-    protected function registerAnimate()
+    public function registerAnimate()
     {
         AnimateCssAsset::register($this->view);
     }
@@ -141,7 +159,7 @@ class Alert extends Widget
     /**
      * Register client assets
      */
-    protected function registerAssets()
+    public function registerAssets()
     {
         SweetAlert2Asset::register($this->view);
         if (isset($this->options['animation']) && $this->options['animation'] === false) {
