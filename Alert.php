@@ -74,7 +74,7 @@ class Alert extends Widget
                     $this->initSwalQueue($steps);
                 } else {
                     $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
-                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] == false) {
+                    if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] === false) {
                         if (isset($steps[0]['text']['customClass'])) {
                             $this->registerAnimate();
                         }
@@ -144,7 +144,7 @@ class Alert extends Widget
     protected function registerAssets()
     {
         SweetAlert2Asset::register($this->view);
-        if (isset($this->options['animation']) && $this->options['animation'] == false) {
+        if (isset($this->options['animation']) && $this->options['animation'] === false) {
             if (isset($this->options['customClass'])) {
                 $this->registerAnimate();
             }
@@ -159,3 +159,4 @@ class Alert extends Widget
         return $this->useSessionFlash ? Yii::$app->session : false;
     }
 }
+
