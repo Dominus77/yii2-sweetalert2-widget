@@ -65,7 +65,7 @@ class Alert extends Widget
                 if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
                     $this->initSwalQueue($steps);
                 } else {
-                    $this->getFlashWidget($steps);
+                    $this->initFlashWidget($steps);
                 }
             }
         } else {
@@ -92,22 +92,6 @@ class Alert extends Widget
     }
 
     /**
-     * @param array $steps
-     */
-    public function getFlashWidget($steps = [])
-    {
-        $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
-        if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] === false) {
-            if (isset($steps[0]['text']['customClass'])) {
-                $this->registerAnimate();
-            }
-        }
-        $this->options = $steps[0]['text'];
-        $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
-        $this->initSwal($this->getOptions(), $this->callback);
-    }
-
-    /**
      * Get widget options
      *
      * @return string
@@ -125,6 +109,22 @@ class Alert extends Widget
             return chop($str, ' ,');
         }
         return Json::encode($this->options);
+    }
+
+    /**
+     * @param array $steps
+     */
+    public function initFlashWidget($steps = [])
+    {
+        $steps[0]['text']['type'] = isset($steps[0]['text']['type']) ? $steps[0]['text']['type'] : $steps[0]['type'];
+        if (isset($steps[0]['text']['animation']) && $steps[0]['text']['animation'] === false) {
+            if (isset($steps[0]['text']['customClass'])) {
+                $this->registerAnimate();
+            }
+        }
+        $this->options = $steps[0]['text'];
+        $this->callback = isset($steps[1]['text']['callback']) ? $steps[1]['text']['callback'] : $this->callback;
+        $this->initSwal($this->getOptions(), $this->callback);
     }
 
     /**
