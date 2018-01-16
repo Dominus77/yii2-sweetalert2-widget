@@ -7,6 +7,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/?branch=master)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/86b5a09d-a3fa-4d25-b3e9-b65c417ccc8b/big.png)](https://insight.sensiolabs.com/projects/86b5a09d-a3fa-4d25-b3e9-b65c417ccc8b)
+
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
 ## Installation
