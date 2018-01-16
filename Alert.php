@@ -55,63 +55,6 @@ class Alert extends Widget
     }
 
     /**
-     * @inheritdoc
-     */
-    public function run()
-    {
-        if ($session = $this->getSession()) {
-            $steps = $this->processFlash($session);
-            if (!empty($steps)) {
-                if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
-                    $this->initSwalQueue($steps);
-                } else {
-                    $this->initFlashWidget($steps);
-                }
-            }
-        } else {
-            $this->initSwal($this->getOptions(), $this->callback);
-        }
-    }
-
-    /**
-     * @param $session bool|mixed|\yii\web\Session
-     * @return array
-     */
-    public function processFlash($session)
-    {
-        $flashes = $session->getAllFlashes();
-        $steps = [];
-        foreach ($flashes as $type => $data) {
-            $data = (array)$data;
-            foreach ($data as $message) {
-                array_push($steps, ['type' => $type, 'text' => $message]);
-            }
-            $session->removeFlash($type);
-        }
-        return $steps;
-    }
-
-    /**
-     * Get widget options
-     *
-     * @return string
-     */
-    public function getOptions()
-    {
-        if (isset($this->options['id']))
-            unset($this->options['id']);
-
-        if (ArrayHelper::isIndexed($this->options)) {
-            $str = '';
-            foreach ($this->options as $value) {
-                $str .= '"' . $value . '",';
-            }
-            return chop($str, ' ,');
-        }
-        return Json::encode($this->options);
-    }
-
-    /**
      * @param array $steps
      */
     public function initFlashWidget($steps = [])
@@ -167,6 +110,63 @@ class Alert extends Widget
                 $this->registerAnimate();
             }
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        if ($session = $this->getSession()) {
+            $steps = $this->processFlash($session);
+            if (!empty($steps)) {
+                if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
+                    $this->initSwalQueue($steps);
+                } else {
+                    $this->initFlashWidget($steps);
+                }
+            }
+        } else {
+            $this->initSwal($this->getOptions(), $this->callback);
+        }
+    }
+
+    /**
+     * @param $session bool|mixed|\yii\web\Session
+     * @return array
+     */
+    public function processFlash($session)
+    {
+        $flashes = $session->getAllFlashes();
+        $steps = [];
+        foreach ($flashes as $type => $data) {
+            $data = (array)$data;
+            foreach ($data as $message) {
+                array_push($steps, ['type' => $type, 'text' => $message]);
+            }
+            $session->removeFlash($type);
+        }
+        return $steps;
+    }
+
+    /**
+     * Get widget options
+     *
+     * @return string
+     */
+    public function getOptions()
+    {
+        if (isset($this->options['id']))
+            unset($this->options['id']);
+
+        if (ArrayHelper::isIndexed($this->options)) {
+            $str = '';
+            foreach ($this->options as $value) {
+                $str .= '"' . $value . '",';
+            }
+            return chop($str, ' ,');
+        }
+        return Json::encode($this->options);
     }
 
     /**
