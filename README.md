@@ -2,7 +2,7 @@
 
 [![Latest Version](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
 [![Software License](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/license)](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md)
-[![Build Status](https://travis-ci.org/Dominus77/yii2-sweetalert2-widget.svg?branch=master)](https://travis-ci.org/Dominus77/yii2-sweetalert2-widget)
+[![Build Status](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/build-status/master)
 [![codecov](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget/branch/master/graph/badge.svg)](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/?branch=master)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
