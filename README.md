@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget/branch/master/graph/badge.svg)](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/?branch=master)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953/mini.png)](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30/mini.png)](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30)
 
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
@@ -554,4 +554,5 @@ Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 ## License
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953/big.png)](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953)
+## SensioLabs
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30/big.png)](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30)
