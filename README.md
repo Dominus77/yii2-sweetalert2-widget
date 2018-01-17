@@ -1,3 +1,5 @@
+![alt text](swal2-logo.png)
+
 # yii2-sweetalert2-widget
 
 [![Latest Version](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
