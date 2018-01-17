@@ -59,6 +59,20 @@ class Alert extends Widget
     /**
      * @param array $steps
      */
+    public function initFlashWidget($steps = [])
+    {
+        if (!empty($steps)) {
+            if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
+                $this->initSwalQueue($steps);
+            } else {
+                $this->processFlashWidget($steps);
+            }
+        }
+    }
+
+    /**
+     * @param array $steps
+     */
     public function initSwalQueue($steps = [])
     {
         $view = $this->getView();
@@ -83,14 +97,7 @@ class Alert extends Widget
     public function run()
     {
         if ($session = $this->getSession()) {
-            $steps = $this->processFlash($session);
-            if (!empty($steps)) {
-                if (isset($steps[0]['text']) && !is_array($steps[0]['text'])) {
-                    $this->initSwalQueue($steps);
-                } else {
-                    $this->processFlashWidget($steps);
-                }
-            }
+            $this->initFlashWidget($this->processFlashSession($session));
         } else {
             $this->initSwal($this->getOptions(), $this->callback);
         }
@@ -100,7 +107,7 @@ class Alert extends Widget
      * @param $session bool|mixed|\yii\web\Session
      * @return array
      */
-    public function processFlash($session)
+    public function processFlashSession($session)
     {
         $flashes = $session->getAllFlashes();
         $steps = [];
