@@ -22,7 +22,7 @@ class Alert extends Widget
     const TYPE_SUCCESS = 'success';
     const TYPE_WARNING = 'warning';
     const TYPE_QUESTION = 'question';
-    
+
     // input type
     const INPUT_TYPE_TEXT = 'text';
     const INPUT_TYPE_EMAIL = 'email';
@@ -140,7 +140,6 @@ class Alert extends Widget
             }
             return chop($str, ' ,');
         }
-
         return Json::encode($this->options);
     }
 
