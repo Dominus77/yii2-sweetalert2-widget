@@ -16,14 +16,14 @@ use dominus77\sweetalert2\assets\AnimateCssAsset;
  */
 class Alert extends Widget
 {
-    // modal type
+    // Modal Type
     const TYPE_INFO = 'info';
     const TYPE_ERROR = 'error';
     const TYPE_SUCCESS = 'success';
     const TYPE_WARNING = 'warning';
     const TYPE_QUESTION = 'question';
 
-    // input type
+    // Input Type
     const INPUT_TYPE_TEXT = 'text';
     const INPUT_TYPE_EMAIL = 'email';
     const INPUT_TYPE_PASSWORD = 'password';
@@ -46,6 +46,15 @@ class Alert extends Widget
      * @var string alert callback
      */
     public $callback = 'function() {}';
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        SweetAlert2Asset::register($this->view);
+    }
 
     /**
      * @param array $steps
@@ -73,7 +82,6 @@ class Alert extends Widget
      */
     public function run()
     {
-        SweetAlert2Asset::register($this->view);
         if ($session = $this->getSession()) {
             $steps = $this->processFlash($session);
             if (!empty($steps)) {
