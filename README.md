@@ -1,4 +1,3 @@
-
 # yii2-sweetalert2-widget
 
 [![Latest Version](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
@@ -9,9 +8,9 @@
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953/mini.png)](https://insight.sensiolabs.com/projects/d0de0c0a-4736-440d-a1d2-37a3775fc953)
 
-![alt text](swal2-logo.png)
-
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
+
+[![SweetAlert2](https://sweetalert2.github.io/)](swal2-logo.png)
 
 ## Installation
 
