@@ -554,5 +554,5 @@ Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 ## License
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
 
-## SensioLabs
+## Sensio Labs
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30/big.png)](https://insight.sensiolabs.com/projects/acb4c440-45cc-4496-8287-6b477550ab30)
