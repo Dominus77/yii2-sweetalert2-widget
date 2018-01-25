@@ -49,8 +49,12 @@ class AlertTest extends TestCase
             ]
         ]);
 
-        $alert = Alert::widget(['useSessionFlash' => true]);
-        $this->assertContains('', $alert);
+        /** @var \yii\web\Session $session */
+        $session = $this->getSession();
+        $flashes = $session->getAllFlashes();
+
+        $this->expectOutputString($flashes['success'][0]['title']);
+        print 'Your title';
     }
 
     /**
@@ -69,20 +73,7 @@ class AlertTest extends TestCase
                 'confirmButtonText' => 'Yes, delete it!',
             ],
             [
-                'callback' => new JsExpression("
-                    function (result) {
-                        if(result.value) {
-                            swal('Deleted!','Your file has been deleted.','success')
-                        }
-                        if (result.dismiss === 'cancel') {
-                            swal(
-                                'Cancelled',
-                                'Your imaginary file is safe :)',
-                                'error'
-                            )
-                        }
-                    }
-                ")
+                'callback' => "This callback"
             ]
         ]);
 
@@ -104,5 +95,14 @@ class AlertTest extends TestCase
             ],
         ]);
         $this->assertContains('', $alert);
+    }
+
+    /**
+     * @param bool|true $useSessionFlash
+     * @return bool|mixed|\yii\web\Session
+     */
+    private function getSession($useSessionFlash = true)
+    {
+        return $useSessionFlash ? \Yii::$app->session : false;
     }
 }
