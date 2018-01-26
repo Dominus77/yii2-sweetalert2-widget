@@ -1,7 +1,10 @@
 <?php
+
 namespace tests;
+
 use dominus77\sweetalert2\Alert;
 use yii\helpers\Json;
+
 /**
  * Class AlertTest
  * @package tests
