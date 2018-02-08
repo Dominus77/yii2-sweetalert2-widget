@@ -19,13 +19,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require dominus77/yii2-sweetalert2-widget "*"
+php composer.phar require dominus77/yii2-sweetalert2-widget "~1.3"
 ```
 
 or add
 
 ```
-"dominus77/yii2-sweetalert2-widget": "*"
+"dominus77/yii2-sweetalert2-widget": "~1.3"
 ```
 
 to the require section of your `composer.json` file.
