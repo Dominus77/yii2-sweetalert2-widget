@@ -69,6 +69,7 @@ Yii::$app->session->setFlash('', [
     [
         'callback' => new \yii\web\JsExpression("
             function (result) {
+                // handle dismiss, result.dismiss can be 'cancel', 'overlay', 'close', and 'timer'
                 if (result.dismiss === 'timer') {
                     console.log('I was closed by the timer')
                 }
@@ -207,7 +208,7 @@ A warning message, with a function attached to the "Confirm"-button...
         function (result) {
             if(result.value) {
                 swal('Deleted!','Your file has been deleted.','success')
-            }
+            }            
             if (result.dismiss === 'cancel') {
                 swal(
                     'Cancelled',

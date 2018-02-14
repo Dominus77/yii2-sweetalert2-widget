@@ -18,11 +18,6 @@ class SweetAlert2Asset extends AssetBundle
     /**
      * @var array
      */
-    public $css = [];
-
-    /**
-     * @var array
-     */
     public $js = [];
 
     /**
@@ -31,7 +26,6 @@ class SweetAlert2Asset extends AssetBundle
     public function init()
     {
         $min = YII_ENV_DEV ? '' : '.min';
-        $this->css[] = 'sweetalert2' . $min . '.css';
-        $this->js[] = 'sweetalert2' . $min . '.js';
+        $this->js[] = 'sweetalert2.all' . $min . '.js';
     }
 }
