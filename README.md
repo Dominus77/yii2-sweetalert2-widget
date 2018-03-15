@@ -6,6 +6,7 @@
 [![codecov](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget/branch/master/graph/badge.svg)](https://codecov.io/gh/Dominus77/yii2-sweetalert2-widget)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Dominus77/yii2-sweetalert2-widget/?branch=master)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-sweetalert2-widget/downloads)](https://packagist.org/packages/dominus77/yii2-sweetalert2-widget)
+[![PayPal donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DG3DJK7CZHPH2 "Donate once-off to this project using Paypal")
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c3336b06-6a1e-4493-903d-8a0d06987416/mini.png)](https://insight.sensiolabs.com/projects/c3336b06-6a1e-4493-903d-8a0d06987416)
 
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
