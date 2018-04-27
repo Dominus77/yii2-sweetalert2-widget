@@ -11,7 +11,7 @@
 
 Renders a [SweetAlert2](https://sweetalert2.github.io/) widget for Yii2.
 
-![Logo SweetAlert2](swal2-logo.png)
+![Logo SweetAlert2](/swal2-logo.png)
 
 ## Installation
 
