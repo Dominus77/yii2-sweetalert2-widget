@@ -3,7 +3,7 @@
     "description": "Renders a SweetAlert2 widget for Yii2.",
     "type": "yii2-extension",
     "keywords": ["dominus77","yii2","extension","widget","sweetalert2"],
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "authors": [
         {
             "name": "Alexey Schevchenko",

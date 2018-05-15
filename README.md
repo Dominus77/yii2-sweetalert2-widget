@@ -554,7 +554,7 @@ $ phpunit
 Please, check the [SweetAlert2](https://sweetalert2.github.io/)
 
 ## License
-The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/Dominus77/yii2-sweetalert2-widget/blob/master/LICENSE.md) for more information.
 
 ## Sensio Labs
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4396a034-3d18-44dc-a2cf-e7f5d5621704/big.png)](https://insight.sensiolabs.com/projects/4396a034-3d18-44dc-a2cf-e7f5d5621704)
