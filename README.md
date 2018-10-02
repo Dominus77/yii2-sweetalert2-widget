@@ -281,7 +281,7 @@ Password:
         'title' => 'Enter your password',
         'input' => Alert::INPUT_TYPE_PASSWORD,
         'inputAttributes' => [
-        'maxlength' => 10,
+            'maxlength' => 10,
             'autocapitalize' => 'off',
             'autocorrect' => 'off',
         ]
