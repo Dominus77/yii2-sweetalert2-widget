@@ -25,7 +25,6 @@ class SweetAlert2Asset extends AssetBundle
      */
     public function init()
     {
-        $min = YII_ENV_DEV ? '' : '.min';
-        $this->js[] = 'sweetalert2.all' . $min . '.js';
+        $this->js[] = 'https://cdn.jsdelivr.net/npm/sweetalert2@7';
     }
 }
