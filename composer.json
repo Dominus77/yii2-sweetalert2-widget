@@ -13,7 +13,7 @@
     "require": {
         "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "npm-asset/sweetalert2": "^7.6",
+        "npm-asset/sweetalert2": "^9.3",
         "daneden/animate.css": "^3.5"
     },
     "require-dev": {
