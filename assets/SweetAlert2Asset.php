@@ -13,7 +13,7 @@ class SweetAlert2Asset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@bower/sweetalert2/dist';
+    public $sourcePath = '@npm/sweetalert2/dist';
 
     /**
      * @var array
