@@ -1,4 +1,3 @@
-assets/src/* linguist-vendored
 # Ignore all test and documentation for archive
 .github            export-ignore
 .gitattributes     export-ignore

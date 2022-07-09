@@ -25,7 +25,7 @@ tools:
         config:
             standard: PSR2
         filter:
-            paths: ['Alert.php', 'assets']
+            paths: ['src/Alert.php', 'src/assets']
     php_loc:
         enabled: true
         excluded_dirs: [vendor, tests]
