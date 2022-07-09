@@ -104,8 +104,9 @@ class Alert extends Widget
     public function initSwalFire()
     {
         $options = $this->getOptions();
+        $mixinOptions = Json::encode($this->mixinOptions);
         $js = "async function startSwal() {
-            Swal.fire({$options}).then({$this->callback})
+            Swal.mixin({$mixinOptions}).fire({$options}).then({$this->callback})
         }";
         if ($this->autostart === true) {
             $js .= "startSwal();";

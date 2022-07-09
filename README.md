@@ -37,7 +37,7 @@ Once the extension is installed, simply use it in your code by:
 
 View:
 ```
-<?= \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]) ?>
+<?php \dominus77\sweetalert2\Alert::widget(['useSessionFlash' => true]); ?>
 ```
 
 Controller:
@@ -68,7 +68,7 @@ Yii::$app->session->setFlash('', [
     ],
     [
         'callback' => new \yii\web\JsExpression("
-            function (result) {
+            (result) => {
                 // handle dismiss, result.dismiss can be 'cancel', 'overlay', 'close', and 'timer'
                 if (result.dismiss === 'timer') {
                     console.log('I was closed by the timer')
@@ -88,59 +88,59 @@ use dominus77\sweetalert2\Alert;
 
 A basic message
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'Any fool can use a computer'
     ],
-]) ?>
+]); ?>
 ```
 
 A title with a text under
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'The Internet?',
         'That thing is still around?',
         Alert::TYPE_QUESTION
     ]
-]) ?>
+]); ?>
 ```
 
 A success message!
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'Good job!',
         'You clicked the button!',
         Alert::TYPE_SUCCESS
     ]
-]) ?>
+]); ?>
 ```
 
 A message with auto close timer
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'title' => 'Auto close alert!',
         'text' => 'I will close in 2 seconds.',
         'timer' => 2000,
     ],
     'callback' => new \yii\web\JsExpression("
-        function (result) {
+        (result) => {
             if (result.dismiss === 'timer') {
                 console.log('I was closed by the timer')
             }
         }
     "),
-]) ?>
+]); ?>
 ```
 
 Custom HTML description and buttons
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'title' => '<i>HTML</i> <u>example</u>',
-        'type' => Alert::TYPE_INFO,
+        'icon' => Alert::TYPE_INFO,
         'html' => 'You can use <b>bold text</b>,'
             . '<a href="//github.com">links</a> '
             . 'and other HTML tags',
@@ -148,53 +148,57 @@ Custom HTML description and buttons
         'showCancelButton' => true,
         'confirmButtonText' => '<i class="fa fa-thumbs-up"></i> Great!',
         'cancelButtonText' => '<i class="fa fa-thumbs-down"></i>',
-    ],
-]) ?>
+    ]
+]); ?>
 ```
 
-jQuery HTML with custom animation [Animate.css](https://daneden.github.io/animate.css)
+Custom animation with [Animate.css](https://animate.style/)
 
 Example:
 ```
-<?= Alert::widget([
+<?php Alert::widget([
+    'customAnimate' => true,
     'options' => [
-        'title' => 'jQuery HTML example',
-        'html' => new \yii\web\JsExpression("$('<div>').addClass('some-class').text('jQuery is everywhere.')"),
-        'animation' => false,
-        'customClass' => 'animated jello', // https://daneden.github.io/animate.css/
-    ],
-]) ?>
+        'title' => 'Custom animation with Animate.css',
+        'showClass' => [
+            'popup' => 'animate__animated animate__fadeInDown'
+        ],
+        'hideClass' => [
+            'popup' => 'animate__animated animate__fadeOutUp'
+        ]
+    ]
+]); ?>
 ```
 
 A warning message, with a function attached to the "Confirm"-button...
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'title' => 'Are you sure?',
         'text' => "You won't be able to revert this!",
-        'type' => Alert::TYPE_WARNING,
+        'icon' => Alert::TYPE_WARNING,
         'showCancelButton' => true,
         'confirmButtonColor' => '#3085d6',
         'cancelButtonColor' => '#d33',
         'confirmButtonText' => 'Yes, delete it!',
     ],
     'callback' => new \yii\web\JsExpression("
-        function (result) {
+        (result) => {
             if(result.value === true){
-                swal('Deleted!','Your file has been deleted.','success')
+                Swal.fire('Deleted!','Your file has been deleted.','success');
             }
         }
     "),
-]) ?>
+]); ?>
 ```
 
 ... and by passing a parameter, you can execute something else for "Cancel".
 ```
-<?= Alert::widget([
+<?php Alert::widget([
     'options' => [
         'title' => 'Are you sure?',
         'text' => "You won't be able to revert this!",
-        'type' => Alert::TYPE_WARNING,
+        'icon' => Alert::TYPE_WARNING,
         'showCancelButton' => true,
         'confirmButtonColor' => '#3085d6',
         'cancelButtonColor' => '#d33',
@@ -205,16 +209,16 @@ A warning message, with a function attached to the "Confirm"-button...
         'buttonsStyling' => false,
     ],
     'callback' => new \yii\web\JsExpression("
-        function (result) {
+        (result) => {
             if(result.value) {
-                swal('Deleted!','Your file has been deleted.','success')
+                Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             }            
             if (result.dismiss === 'cancel') {
-                swal(
+                Swal.fire(
                     'Cancelled',
                     'Your imaginary file is safe :)',
                     'error'
-                )
+                );
             }
         }
     "),
