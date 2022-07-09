@@ -16,7 +16,7 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">./assets/</directory>
+            <directory suffix=".php">./src/assets/</directory>
             <file>./src/Alert.php</file>
         </whitelist>
     </filter>
